@@ -2,7 +2,7 @@
 参考文章[https://blog.csdn.net/bbzhaohui/article/details/81665370](https://blog.csdn.net/bbzhaohui/article/details/81665370)
 ## 一、mmap的基本概念
 &emsp;&emsp;mmap是一种内存映射文件的方法，即将磁盘上的内容映射到进程的虚拟地址空间上来，这样我们就可以通过指针来操作这一块数据，而不必用open和write来读写这段数据。并且，我们在进程空间对该段数据的操作，会被自动同步到磁盘上，这样就是进程间通信共享内存的实现原理，在一个进程里可以直接操作磁盘上某段数据，如果两个或者多个进程共享该数据段，那么另一个进程就可以得到该进程对共享数据的修改。
-&emsp;&emsp;linux内核使用vm_area_struct结构来表示一个独立的虚拟内存区域，由于每个不同质的虚拟内存区域功能和内部机制都不同，因此一个进程使用多个vm_area_struct结构来分别表示不同类型的虚拟内存区域。各个vm_area_struct结构使用链表或者树形结构链接，方便进程快速访问；![在这里插入图片描述](https://img-blog.csdnimg.cn/20200831191214451.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDgxNjczMg==,size_16,color_FFFFFF,t_70#pic_center)
+&emsp;&emsp;linux内核使用vm_area_struct结构来表示一个独立的虚拟内存区域，由于每个不同质的虚拟内存区域功能和内部机制都不同，因此一个进程使用多个vm_area_struct结构来分别表示不同类型的虚拟内存区域。各个vm_area_struct结构使用链表或者树形结构链接，方便进程快速访问；
 
 ## 二、mmap内存映射原理
 mmap内存映射的实现过程，总的来说可以分为三个阶段：
