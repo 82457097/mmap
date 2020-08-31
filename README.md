@@ -99,6 +99,7 @@ int msync( void *addr, size_t len, int flags )
 #include <fcntl.h>
 #include <errno.h>
 #include <sys/stat.h>
+#include　<unistd.h>
  
 int main(int argc, char *argv[])
 {
